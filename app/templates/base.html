@@ -1,17 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../static/css/base/base.css">
+    <link rel="stylesheet" href="{% static 'css/base/base.css' %}">
+    <link rel="stylesheet" href="{% static 'cars/home_page.css' %}">
+    
     <title>{% block title%} {%endblock%}</title>
 </head>
 <body>
 
-     <form class="form_busca" method="GET" action="{% url 'car_list' %}">
-        <input type="text" name="search" placeholder="Buscar carros">
-        <button type="submit">Buscar</button>
-    </form>
+    <head>
+        <div class="head">
+            <h1><a href="http://127.0.0.1:8000/index/">Home</a></h1>
+
+            <form class="form_busca" method="GET" action="{% url 'car_list' %}">
+                <input type="text" name="search" placeholder="Buscar carros">
+                <button type="submit">Buscar</button>
+            </form>
+
+        </div>
+    </head>
+     
 
     
 <main>

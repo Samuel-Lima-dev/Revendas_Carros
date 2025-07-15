@@ -113,5 +113,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# Importar a biblioteca Os 
+# 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Caminho do sistema onde será salvo o arquivo dos uploads 
+MEDIA_URL = '/media/' # Caminho da url onde o mavegador acessa os arquivos 
