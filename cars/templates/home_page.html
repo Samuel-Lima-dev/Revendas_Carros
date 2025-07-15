@@ -1,23 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
     {%block content%}
 
-        <form method="GET" action="{% url 'car_list' %}">
-            <input type="text" name="search" placeholder="Buscar carros">
-            <button type="submit">Buscar</button>
-        </form>
-        {%for car in cars%}
-            <img src="{{ car.photo.url }}">
-            <h3> {{car.model}} {{car.value}}</h3>
-        {%endfor%}
+        {% if cars %}
+            {%for car in cars%}
+                {% if car.photo%}
+                    <img src="{{ car.photo.url }}">
+                {%endif%}
+                <h2>{{car.brand}} {{car.model}} </h2>
+                <h3>Ano: {{car.year}}</h3>
+                <h1>R$ {{car.value}}</h1>
+            {%endfor%}
+        {%else%}
+            <p calss="no-results">Nenhum valor encontrado</p>
+        {%endif%}
+
     {%endblock%}
-
-
-</body>
-</html>
