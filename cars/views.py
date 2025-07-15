@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from cars.models import Car
-from cars.form import CarRegistrationForm
+from cars.form import CarModelForm
 
 
 # Consulta os carros do banco e retrona para pagina html
@@ -25,16 +25,16 @@ def car_registration(request):
 
     if request.method == 'POST':
         #pegando os dados enviado no formulario, através do método post 
-        # (request.files ) para quando o formulario estivar o atributo
+        # (request.files ) para quando o formulario estivar o atributo:
         # encytype="multipart/form-data"
-        new_car_form = CarRegistrationForm(request.POST, request.FILES)
+        new_car_form = CarModelForm(request.POST, request.FILES)
 
         #Verificar se os dados enviado no formulario são validos
         if new_car_form.is_valid():
             new_car_form.save()
             return redirect('newcar') # redirecionar para a pagina newcar após os dados serem salvos
     else:
-        new_car_form = CarRegistrationForm()
+        new_car_form = CarModelForm()
     
 
     return render(

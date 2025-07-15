@@ -9,7 +9,7 @@ from cars.views import car_views, car_registration
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', car_views, name='car_list'),
-    path('newcar/', car_registration, name='newcar')
+    path('newcar/', car_registration, name='newcar'),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # Serve arquivos de midia
