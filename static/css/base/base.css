@@ -3,32 +3,57 @@
     margin: 0px;
 }
 
-.head{
+.head_conteiner{
+    width: 100%;
+    background-color: rgb(3, 133, 255);
+}
+
+.nav_conteiner{
     display: flex;
-    background-color: rgb(0, 0, 255);
+    justify-content: space-between;
+    padding: 30px;
 }
-.head h1{
-    color: white;
-}
-.card_conteiner{
-    display: block; 
-    justify-items: center;
-    justify-content: center;
+
+.nav_conteiner input{
     width: 400px;
-    background-color: rgb(224, 224, 224);
-    border-radius: 5%;
-    padding: 20px;
-    margin: 30px;
+    padding: 15px;
+    border: 0px solid ;
+    border-radius: 3px 0px 0px 3px;
 
 }
-.card_conteiner img{
-    display: block; 
-    justify-items: center;
-    justify-content: center;
-    width:  100%;
-    height: 300px;
+
+.nav_conteiner h1{
+    color: white;
 }
+
+.nav_conteiner input:focus{
+    outline: none;
+}
+
+.nav_conteiner ul{
+    display: flex;
+    gap: 20px;  
+    list-style-type: None; 
+}
+
+
+.form_busca{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.form_busca button{
+    padding: 15px;
+    border: 0px, solid ;
+    border-radius: 0px 3px 3px 0px;
+    background-color: rgb(235, 15, 15);
+    color: white;
+
+}
+
 
 a{
     text-decoration: none;
+    color: inherit;
 }

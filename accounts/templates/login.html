@@ -2,12 +2,14 @@
 
 {% block content %}
 
-    <form method="POST" name="login">
+    <form class="form_login" method="POST" name="login">
         {% csrf_token %}
 
-        {{login_form}}
+        {{login_form.as_table}}
+        
         <button type="submit">Entrar</button>
 
     </form>
+    <a href="{% url 'register_user'%}">Cadastre-se</a>    
 
 {% endblock %}

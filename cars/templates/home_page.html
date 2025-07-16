@@ -1,19 +1,23 @@
 {% extends "base.html" %}
     {%block content%}
 
+    <div class="div_conteiner">
         {% if cars %}
             {%for car in cars%}
-                <div class="card_conteiner">
-                    {% if car.photo%}
-                        <img src="{{ car.photo.url }}">
-                    {%endif%}
-                    <h2>{{car.brand}} {{car.model}} </h2>
-                    <h3>Ano: {{car.year}}</h3>
-                    <h1>R$ {{car.value}}</h1>
-                </div>
+                
+                    <div class="card_conteiner">
+                        {% if car.photo%}
+                            <img src="{{ car.photo.url }}">
+                        {%endif%}
+                        <h2>{{car.brand}} {{car.model}} </h2>
+                        <h3>Ano: {{car.year}}</h3>
+                        <h1>R$ {{car.value}}</h1>
+                    </div>
+                
             {%endfor%}
         {%else%}
             <p calss="no-results">Nenhum valor encontrado</p>
         {%endif%}
+    </div>
 
     {%endblock%}
