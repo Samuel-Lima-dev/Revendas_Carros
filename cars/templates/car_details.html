@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+
+
+{% block content %}
+    <div class="card_detail ">
+
+        <img src="{{car_detail.photo.url}}">
+        <h3>{{car_detail.brand}} {{car_detail.model}}</h3>
+        <h1>{{car_detail.value}}</h1>
+
+    </div>
+    <p><a href="{% url 'car_update' pk=car_detail.pk%}">link</a></p>
+    <p><a href="{% url 'car_delete' pk=car_detail.pk%}">link</a></p>
+    
+    
+{% endblock %}

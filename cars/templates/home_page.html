@@ -4,6 +4,8 @@
     <div class="div_conteiner">
         {% if cars %}
             {%for car in cars%}
+
+                <a href="{% url 'car_detail' pk=car.pk%}">
                 
                     <div class="card_conteiner">
                         {% if car.photo%}
@@ -13,6 +15,7 @@
                         <h3>Ano: {{car.year}}</h3>
                         <h1>R$ {{car.value}}</h1>
                     </div>
+                </a>
                 
             {%endfor%}
         {%else%}

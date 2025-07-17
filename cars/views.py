@@ -3,12 +3,14 @@ from cars.models import Car
 from cars.form import CarModelForm
 
 from django.views import View
+from django.views.generic import DetailView
 
 
 
+#Listar carros 
 # Consulta os carros do banco e retorna para pagina html
 # Consulta de forma filtrada através da buscaa do ususario
-class CarView(View):
+class CarView(View): 
     
     def get(self, request):
         cars = Car.objects.all().order_by('model')##busca todos os carros
@@ -16,7 +18,7 @@ class CarView(View):
         ## pega dados da busca do usuario
         search = request.GET.get('search')  
         if search:
-            cars = cars.filter(model_icontains=search)
+            cars = cars.filter(model__icontains=search)
 
         return render(
             request,
@@ -25,6 +27,7 @@ class CarView(View):
         )
     
 
+# Registrar novos carros
 class CarRegistrationView(View):
 
     def get(self, request):
@@ -55,5 +58,62 @@ class CarRegistrationView(View):
             {'new_car_form': new_car_form}
         )
 
+
+
+class CarDetailView(View):
+
+    def get(self, request, pk):
+        car_detail = Car.objects.get(pk=pk)
+
+        return render(
+            request,
+            'car_details.html',
+            {'car_detail': car_detail}
+
+        )
+
+     
+class CarUpdateView(View):
+    
+    def get(self, request, pk):
+        # buscar no banco o carro referente a pk 
+        car = Car.objects.get(pk=pk)
+
+        # Preenche o formulario com os dados recuperados do banco de dados
+        # para ser renderizados no HTML
+        form = CarModelForm(instance=car)
+        return render(
+            request, 
+            'car_update.html',
+            {'form': form}
+        )
+        
+    def post(self, request, pk):
+        car = Car.objects.get(pk=pk)
+
+        # Pega os dados passado no formulário e atualiza o objeto car já existente
+        form = CarModelForm(request.POST, instance=car)
+
+        if form.is_valid():
+            form.save()
+
+            # Após salvar as alterações, é redirecionado para paginas de detalhes
+            # passando o pk do carro que estava sendo editado
+            # pois o metodo detalhes também espera a pk como parâmetro
+            return redirect(
+                'car_detail',
+                pk=car.pk
+            )
+        else:
+            return render(
+                request, 
+                'car_update.html',
+                {'form': form}
+            )
+        
+
+
+class CarDeleteView(View):
+    ...
 
 
