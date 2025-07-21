@@ -6,9 +6,6 @@ from cars.models import Car
 from cars.form import CarModelForm
 
 
-
-
-
 #Listar carros 
 # Consulta os carros do banco e retorna para pagina html
 # Consulta de forma filtrada através da buscaa do ususario
@@ -44,8 +41,9 @@ class CarDetailView(View):
         )
 
 
+#Proteção da view com login_required
 @method_decorator(login_required(login_url='login'), name='dispatch')
-# Registrar novos carros
+
 class CarRegistrationView(View):
 
     def get(self, request):
@@ -79,7 +77,7 @@ class CarRegistrationView(View):
 
 
 @method_decorator(login_required(login_url='login'), name='dispatch')
-# Atualizar dados do carro
+
 class CarUpdateView(View):
     
     def get(self, request, pk):
@@ -120,7 +118,7 @@ class CarUpdateView(View):
         
 
 @method_decorator(login_required(login_url='login'), name='dispatch')
-# Deletar carro
+
 class CarDeleteView(View):
 
     def get(self, request, pk):
