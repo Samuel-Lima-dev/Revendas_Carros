@@ -5,7 +5,8 @@
     <form method="post" >
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Alterar</button>
+        <button type="submit">Salvar alterações</button>
     </form>
+    <a href="{% url 'car_detail' car.pk %}">Voltar</a>
   
 {% endblock %}

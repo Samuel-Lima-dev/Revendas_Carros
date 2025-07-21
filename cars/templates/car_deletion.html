@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Tem certeza que deseja excluir o carro "{{car.brand}} {{car.model}}</h1>
+    <img src="{{car.photo.url }}">
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Excluir</button>
+        <a href="{% url 'car_detail' car.pk %}">Cancelar</a>
+
+    </form>
+{% endblock %}

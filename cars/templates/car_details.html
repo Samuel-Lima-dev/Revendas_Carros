@@ -9,8 +9,13 @@
         <h1>{{car_detail.value}}</h1>
 
     </div>
-    <p><a href="{% url 'car_update' pk=car_detail.pk%}">link</a></p>
-    <p><a href="{% url 'car_delete' pk=car_detail.pk%}">link</a></p>
+
+    {% if user.is_authenticated %}
+        <div lass="buttons_conteiner">
+            <p><a href="{% url 'car_update' pk=car_detail.pk%}">Alterar</a></p>
+            <p><a href="{% url 'car_delete' pk=car_detail.pk%}">Deletar</a></p>
+        </div>
+    {% endif %}
     
     
 {% endblock %}

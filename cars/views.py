@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
+from django.views import View
+from django.utils.decorators import method_decorator
 from cars.models import Car
 from cars.form import CarModelForm
 
-from django.views import View
-from django.views.generic import DetailView
+
 
 
 
@@ -13,7 +14,8 @@ from django.views.generic import DetailView
 class CarView(View): 
     
     def get(self, request):
-        cars = Car.objects.all().order_by('model')##busca todos os carros
+        ##busca todos os carros
+        cars = Car.objects.all().order_by('model')
 
         ## pega dados da busca do usuario
         search = request.GET.get('search')  
@@ -50,7 +52,8 @@ class CarRegistrationView(View):
         #Verificar se os dados enviado no formulario são validos
         if new_car_form.is_valid():
             new_car_form.save()
-            return redirect('newcar') # redirecionar para a pagina newcar após os dados serem salvos
+            # redirecionar para a pagina newcar após os dados serem salvos
+            return redirect('newcar') 
         
         return render(
             request,
@@ -59,7 +62,7 @@ class CarRegistrationView(View):
         )
 
 
-
+# Visualizar detalhes do carro
 class CarDetailView(View):
 
     def get(self, request, pk):
@@ -73,6 +76,7 @@ class CarDetailView(View):
         )
 
      
+# Atualizar dados do carro
 class CarUpdateView(View):
     
     def get(self, request, pk):
@@ -85,7 +89,7 @@ class CarUpdateView(View):
         return render(
             request, 
             'car_update.html',
-            {'form': form}
+            {'form': form, 'car':car}
         )
         
     def post(self, request, pk):
@@ -112,8 +116,25 @@ class CarUpdateView(View):
             )
         
 
-
+# Deletar carro
 class CarDeleteView(View):
-    ...
+
+    def get(self, request, pk):
+        car = Car.objects.get(pk=pk)
+
+        return render(
+            request,
+            'car_deletion.html',
+            {'car': car}
+        )
+    
+    def post(self, request, pk):
+        car = Car.objects.get(pk=pk)
+
+        # Deleta o carro do banco de dados
+        car.delete()
+        
+        return redirect('car_list')
+        
 
 
