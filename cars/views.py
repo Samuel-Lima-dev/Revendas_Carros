@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from cars.models import Car
 from cars.form import CarModelForm
@@ -29,6 +30,21 @@ class CarView(View):
         )
     
 
+# Visualizar detalhes do carro
+class CarDetailView(View):
+
+    def get(self, request, pk):
+        car_detail = Car.objects.get(pk=pk)
+
+        return render(
+            request,
+            'car_details.html',
+            {'car_detail': car_detail}
+
+        )
+
+
+@method_decorator(login_required(login_url='login'), name='dispatch')
 # Registrar novos carros
 class CarRegistrationView(View):
 
@@ -62,20 +78,7 @@ class CarRegistrationView(View):
         )
 
 
-# Visualizar detalhes do carro
-class CarDetailView(View):
-
-    def get(self, request, pk):
-        car_detail = Car.objects.get(pk=pk)
-
-        return render(
-            request,
-            'car_details.html',
-            {'car_detail': car_detail}
-
-        )
-
-     
+@method_decorator(login_required(login_url='login'), name='dispatch')
 # Atualizar dados do carro
 class CarUpdateView(View):
     
@@ -116,6 +119,7 @@ class CarUpdateView(View):
             )
         
 
+@method_decorator(login_required(login_url='login'), name='dispatch')
 # Deletar carro
 class CarDeleteView(View):
 
@@ -124,7 +128,7 @@ class CarDeleteView(View):
 
         return render(
             request,
-            'car_deletion.html',
+               'car_deletion.html',
             {'car': car}
         )
     
