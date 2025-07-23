@@ -2,11 +2,11 @@
 
 {% block content %}
 
-    <form method="post" >
+    <form method="post" class="form_update">
         {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Salvar alterações</button>
+        {{form.as_table}}
+        <button class="form_bnt_update" type="submit">Salvar alterações</button>
     </form>
-    <a href="{% url 'car_detail' car.pk %}">Voltar</a>
+    <a href="{% url 'car_detail' car.pk %}" class="form_update_cancelar">Cancelar</a>
   
 {% endblock %}

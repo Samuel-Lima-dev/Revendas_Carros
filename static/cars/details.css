@@ -1,0 +1,39 @@
+.card_detail{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+
+}
+.card_detail h2{
+    padding: 10px;
+}
+.card_detail h1{
+    color: red
+}
+
+.card_detail img {  
+    width: 700px;
+
+}
+
+.buttons_conteiner{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.bnt_delete{
+    background-color: red;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+}
+.bnt_update{
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}

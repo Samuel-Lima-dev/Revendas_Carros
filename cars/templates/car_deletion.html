@@ -2,13 +2,16 @@
 
 {% block content %}
 
-    <h1>Tem certeza que deseja excluir o carro "{{car.brand}} {{car.model}}</h1>
-    <img src="{{car.photo.url }}">
+    <div class="delete_conteiner">
+        <h2>Tem certeza que deseja excluir o carro ?</h2>
+        <h3>{{car.brand}} {{car.model}}</h3>
+        <img src="{{car.photo.url }}">
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Excluir</button>
-        <a href="{% url 'car_detail' car.pk %}">Cancelar</a>
+        <form method="post" class="form_delete">
+            {% csrf_token %}
+            <button type="submit">Excluir</button>
 
-    </form>
+        </form>
+        <a href="{% url 'car_detail' car.pk %}" class="bnt_delete_cancelar">Cancelar</a>
+    </div>
 {% endblock %}

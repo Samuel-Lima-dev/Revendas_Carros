@@ -1,0 +1,62 @@
+.form_update{
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.form_update input{
+    padding: 5px;
+}
+
+.form_update button{
+    width: 150px;
+    padding: 10px;
+}
+
+.form_bnt_update{
+    color: white;
+    background-color: blue;
+    padding: 10px;
+    border: None;
+    border-radius: 5px;
+}
+
+.form_update_cancelar{
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border: None;
+    border-radius: 5px;
+}
+
+.delete_conteiner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+
+}
+
+.delete_conteiner img{
+    width: 500px;
+}
+
+.delete_conteiner button{
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: None;
+    border-radius: 5px;
+}
+
+.bnt_delete_cancelar{
+    border: 1px solid blue;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: blue;
+    color: white;
+}

@@ -19,6 +19,7 @@ class Car(models.Model):
     value = models.FloatField(blank=True, null=True)
     year = models.IntegerField(blank=True, null=True)
     photo = models.ImageField(upload_to='cars/', blank=True, null=True) # pasta onde será feito o upload da imagem
+    bio = models.TextField(blank=True)
 
     # retornar o modelo do carro ao invés de " object " que é o padrão
     def __str__(self):

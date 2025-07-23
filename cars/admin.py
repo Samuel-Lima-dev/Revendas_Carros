@@ -9,7 +9,7 @@ class BrandAdmin(admin.ModelAdmin):
     search_fields = ('name',) 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('model', 'brand', 'value', 'year') # Campos que serão mostrado
+    list_display = ('model', 'brand', 'value', 'year', 'photo', 'bio') # Campos que serão mostrado
     search_fields = ('model',) # Campo para consulta
 
 # Registrando tabelas

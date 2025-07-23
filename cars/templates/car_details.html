@@ -4,16 +4,23 @@
 {% block content %}
     <div class="card_detail ">
 
-        <img src="{{car_detail.photo.url}}">
-        <h3>{{car_detail.brand}} {{car_detail.model}}</h3>
+        {% if car_detail.photo %}
+            <img src="{{car_detail.photo.url}}">
+        {% else %}
+            <p>Foto não disponivel</p>
+        {% endif %}
+        <h2>{{car_detail.brand}} {{car_detail.model}}</h2>
         <h1>{{car_detail.value}}</h1>
+        {% if car_detail.bio%}
+            <p>Bio: {{car_detail.bio}}</p>
+        {%endif%}
 
     </div>
 
     {% if user.is_authenticated %}
-        <div lass="buttons_conteiner">
-            <p><a href="{% url 'car_update' pk=car_detail.pk%}">Alterar</a></p>
-            <p><a href="{% url 'car_delete' pk=car_detail.pk%}">Deletar</a></p>
+        <div class="buttons_conteiner">
+            <p><a href="{% url 'car_update' pk=car_detail.pk%}" class="bnt_update">Alterar</a></p>
+            <p><a href="{% url 'car_delete' pk=car_detail.pk%} " class="bnt_delete">Deletar</a></p>
         </div>
     {% endif %}
     
